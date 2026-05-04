@@ -9,6 +9,6 @@
     #define COREWAR_H_
 
 int corewar(int argc, char **argv);
-void helper(void);
+int helper(void);
 
 #endif

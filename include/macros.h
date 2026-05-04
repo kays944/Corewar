@@ -9,4 +9,5 @@
     #define MACROS_H_
     #define EXIT_SUCCESS 0
     #define EXIT_FAIL 84
+    #define CMP_SUCCESS 0
 #endif
