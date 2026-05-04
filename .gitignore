@@ -1,0 +1,6 @@
+obj
+corewar
+*.s
+*.cor
+*.gc*
+unit_tests
