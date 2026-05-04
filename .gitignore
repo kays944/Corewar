@@ -4,3 +4,4 @@ corewar
 *.cor
 *.gc*
 unit_tests
+debug.c

@@ -8,12 +8,16 @@
 #include "corewar.h"
 #include "macros.h"
 #include "utils.h"
+#include "struct.h"
 #include <stdio.h>
 
 int corewar(int argc, char **argv)
 {
-    if (my_strcmp(argv[1], "-h") == CMP_SUCCESS)
+    option_t opt = {0};
+
+    if (my_strcmp(argv[IDX_FLAG_HELP], CHAR_FLAG_HELP) == CMP_SUCCESS)
         return helper();
-    printf("HelloWorld\n");
+    if (parsing(argc, argv, &opt) == EXIT_FAIL)
+        return EXIT_FAIL;
     return EXIT_SUCCESS;
 }
