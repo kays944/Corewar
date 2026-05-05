@@ -12,6 +12,6 @@
 int corewar(int argc, char **argv);
 int helper(void);
 int parsing(int argc, char **argv, option_t *opt);
-
+int read_champions(option_t *opt);
 
 #endif

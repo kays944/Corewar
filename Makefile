@@ -13,7 +13,8 @@ SRC				=	src/main.c						\
 					src/corewar.c 					\
 					src/helper.c 					\
 					src/op.c 						\
-					src/parsing.c 						\
+					src/parsing.c 					\
+					src/read_champions.c 			\
 					src/utils/array_count.c 		\
 					src/utils/free_array.c 			\
 					src/utils/my_itoa.c 			\

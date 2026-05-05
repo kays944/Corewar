@@ -7,11 +7,13 @@
 
 #ifndef STRUCT_H_
     #define STRUCT_H_
-
+    #include "op.h"
 typedef struct param_ch_s {
     char *name;
     int number;
     int position;
+    header_t header;
+    unsigned char *bytecode;
     struct param_ch_s *next;
 } param_ch_t;
 

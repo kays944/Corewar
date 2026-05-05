@@ -26,5 +26,7 @@
     #define IDX_FLAG_NBR_CYCLE 1
 
     #define PARSING_ERROR -1
+    #define OPEN_ERROR -1
+    #define READ_ERROR -1
 
 #endif
