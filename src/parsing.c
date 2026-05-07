@@ -27,8 +27,8 @@ int parsing_dump(option_t *opt, char *flag, char *nbr_cycles)
 
 int parsing_one(char **argv, int idx, param_ch_t *node)
 {
-    int nbr = 0;
-    int pos = 0;
+    int nbr = -1;
+    int pos = -1;
     char *name = NULL;
 
     if (my_strcmp(argv[idx], CHAR_FLAG_NBR) == CMP_SUCCESS && argv[idx + 1]) {

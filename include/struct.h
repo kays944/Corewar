@@ -19,7 +19,18 @@ typedef struct param_ch_s {
 
 typedef struct option_s {
     int nbr_cycle;
+    int nb_champions;
     param_ch_t *champions;
+    unsigned char memory[MEM_SIZE];
 } option_t;
+
+typedef struct process_s {
+    int registers[REG_NUMBER];
+    int pc;
+    int carry;
+    int last_live;
+    int number;
+    struct process_s *next;
+} process_t;
 
 #endif

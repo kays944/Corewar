@@ -15,6 +15,8 @@ SRC				=	src/main.c						\
 					src/op.c 						\
 					src/parsing.c 					\
 					src/read_champions.c 			\
+					src/get_pos.c 					\
+					src/init_proc.c 				\
 					src/utils/array_count.c 		\
 					src/utils/free_array.c 			\
 					src/utils/my_itoa.c 			\
@@ -60,7 +62,6 @@ $(NAME):	$(OBJ)
 clean:
 	$(RM) -r $(OBJ_DIR)
 	$(RM) *.gc*
-	$(RM) *.cor
 
 fclean:		clean
 	$(RM) $(NAME)
