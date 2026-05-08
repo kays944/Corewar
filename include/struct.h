@@ -17,13 +17,6 @@ typedef struct param_ch_s {
     struct param_ch_s *next;
 } param_ch_t;
 
-typedef struct option_s {
-    int nbr_cycle;
-    int nb_champions;
-    param_ch_t *champions;
-    unsigned char memory[MEM_SIZE];
-} option_t;
-
 typedef struct process_s {
     int registers[REG_NUMBER];
     int pc;
@@ -32,5 +25,14 @@ typedef struct process_s {
     int number;
     struct process_s *next;
 } process_t;
+
+typedef struct option_s {
+    int nbr_cycle;
+    int nb_champions;
+    param_ch_t *champions;
+    unsigned char memory[MEM_SIZE];
+    process_t *proc;
+} option_t;
+
 
 #endif

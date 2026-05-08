@@ -30,7 +30,8 @@ static int get_best_pos(unsigned char mem[])
     for (int i = 0; i != MEM_SIZE; ++i) {
         if (mem[i] == 0)
             ++current;
-        if (mem[i] == 0 && mem[i + 1] != 0 && current > bigger) {
+        if (mem[i] == 0 && (mem[i + 1] != 0 || !mem[i + 1])
+            && current > bigger) {
             bigger = current - 1;
             idx_bigger = i - bigger;
         }
