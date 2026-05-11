@@ -20,5 +20,5 @@ int corewar(int argc, char **argv)
     if (parsing(argc, argv, &opt) == EXIT_FAIL || read_champions(&opt)
         == EXIT_FAIL || init_proc(&opt) == EXIT_FAIL)
         return EXIT_FAIL;
-    return main_loop(&opt);
+    return main_loop(&c);
 }
