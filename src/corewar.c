@@ -13,13 +13,12 @@
 
 int corewar(int argc, char **argv)
 {
-    option_t opt = {0};
+    core_t opt = {0};
 
     if (my_strcmp(argv[IDX_FLAG_HELP], CHAR_FLAG_HELP) == CMP_SUCCESS)
         return helper();
     if (parsing(argc, argv, &opt) == EXIT_FAIL || read_champions(&opt)
-        == EXIT_FAIL)
+        == EXIT_FAIL || init_proc(&opt) == EXIT_FAIL)
         return EXIT_FAIL;
-    init_proc(&opt);
-    return EXIT_SUCCESS;
+    return main_loop(&opt);
 }

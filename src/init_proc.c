@@ -22,7 +22,7 @@ void new_proc(param_ch_t *ch, process_t *node)
     node->next = NULL;
 }
 
-int init_proc(option_t *opt)
+int init_proc(core_t *opt)
 {
     param_ch_t *ch = opt->champions;
     process_t *head = NULL;

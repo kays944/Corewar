@@ -11,7 +11,7 @@
 #include "utils.h"
 #include "struct.h"
 
-int parsing_dump(option_t *opt, char *flag, char *nbr_cycles)
+int parsing_dump(core_t *opt, char *flag, char *nbr_cycles)
 {
     size_t idx = 0;
 
@@ -49,7 +49,7 @@ int parsing_one(char **argv, int idx, param_ch_t *node)
     return idx + 1;
 }
 
-int parsing(int argc, char **argv, option_t *opt)
+int parsing(int argc, char **argv, core_t *opt)
 {
     int i = parsing_dump(opt, argv[IDX_FLAG_DUMP], argv[IDX_FLAG_NBR_CYCLE]);
     param_ch_t *head = NULL;

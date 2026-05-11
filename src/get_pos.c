@@ -46,7 +46,7 @@ static void put_in_memory(unsigned char mem[], param_ch_t *head)
         mem[(head->position + i) % MEM_SIZE] = head->bytecode[i];
 }
 
-int init_memory(option_t *opt)
+int init_memory(core_t *opt)
 {
     param_ch_t *head = opt->champions;
 

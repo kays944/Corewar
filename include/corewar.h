@@ -11,9 +11,10 @@
 
 int corewar(int argc, char **argv);
 int helper(void);
-int parsing(int argc, char **argv, option_t *opt);
-int read_champions(option_t *opt);
-int init_proc(option_t *opt);
-int init_memory(option_t *opt);
+int parsing(int argc, char **argv, core_t *opt);
+int read_champions(core_t *opt);
+int init_proc(core_t *opt);
+int init_memory(core_t *opt);
+int main_loop(core_t *opt);
 
 #endif

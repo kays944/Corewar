@@ -17,6 +17,7 @@ SRC				=	src/main.c						\
 					src/read_champions.c 			\
 					src/get_pos.c 					\
 					src/init_proc.c 				\
+					src/main_loop.c 				\
 					src/utils/array_count.c 		\
 					src/utils/free_array.c 			\
 					src/utils/my_itoa.c 			\

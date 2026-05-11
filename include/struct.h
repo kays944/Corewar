@@ -26,13 +26,13 @@ typedef struct process_s {
     struct process_s *next;
 } process_t;
 
-typedef struct option_s {
+typedef struct core_s {
     int nbr_cycle;
     int nb_champions;
     param_ch_t *champions;
     unsigned char memory[MEM_SIZE];
     process_t *proc;
-} option_t;
+} core_t;
 
 
 #endif

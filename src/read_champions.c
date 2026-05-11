@@ -70,7 +70,7 @@ static int open_champions(param_ch_t *ch, size_t nbr, int nb_champions)
     return EXIT_SUCCESS;
 }
 
-int read_champions(option_t *opt)
+int read_champions(core_t *opt)
 {
     param_ch_t *head = opt->champions;
     size_t nbr = 0;
