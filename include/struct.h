@@ -8,14 +8,15 @@
 #ifndef STRUCT_H_
     #define STRUCT_H_
     #include "op.h"
-typedef struct param_ch_s {
+
+typedef struct champ_s {
     char *name;
     int number;
     int position;
     header_t header;
     unsigned char *bytecode;
-    struct param_ch_s *next;
-} param_ch_t;
+    struct champ_s *next;
+} champ_t;
 
 typedef struct process_s {
     int registers[REG_NUMBER];
@@ -23,13 +24,15 @@ typedef struct process_s {
     int carry;
     int last_live;
     int number;
+    champ_t *champion;
+    int next_execution;
     struct process_s *next;
 } process_t;
 
 typedef struct core_s {
     int nbr_cycle;
     int nb_champions;
-    param_ch_t *champions;
+    champ_t *champions;
     unsigned char memory[MEM_SIZE];
     process_t *proc;
 } core_t;
