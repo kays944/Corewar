@@ -5,15 +5,14 @@
 ** read_champions.c
 */
 
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
 #include "struct.h"
 #include "macros.h"
 #include "utils.h"
 #include "op.h"
 #include "corewar.h"
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 static int swap_endian(int value)
 {
@@ -32,7 +31,8 @@ static int check_exec_magic(int fd, header_t *hd)
     hd->prog_size = swap_endian(hd->prog_size);
     hd->magic = swap_endian(hd->magic);
     if (hd->magic != COREWAR_EXEC_MAGIC) {
-        printf("error file invalid (different magic number)\n");
+        my_putstr("error file invalid (different magic number)\n",
+            STDERR_FILENO);
         return EXIT_FAIL;
     }
     return EXIT_SUCCESS;
@@ -78,8 +78,6 @@ int read_champions(option_t *opt)
     while (head) {
         if (open_champions(head, nbr, opt->nb_champions) == EXIT_FAIL)
             return EXIT_FAIL;
-        opt->champions->header.prog_size =
-            swap_endian(opt->champions->header.prog_size);
         head = head->next;
         ++nbr;
     }

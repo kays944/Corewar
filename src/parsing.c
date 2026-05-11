@@ -5,11 +5,11 @@
 ** parsing.c
 */
 
+#include <stdlib.h>
+#include <unistd.h>
 #include "macros.h"
 #include "utils.h"
 #include "struct.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 int parsing_dump(option_t *opt, char *flag, char *nbr_cycles)
 {
@@ -58,6 +58,8 @@ int parsing(int argc, char **argv, option_t *opt)
 
     for (; argv[i];) {
         node = malloc(sizeof(param_ch_t));
+        if (!node)
+            return EXIT_FAIL;
         i = parsing_one(argv, i, node);
         if (i == PARSING_ERROR)
             return EXIT_FAIL;

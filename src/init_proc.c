@@ -5,10 +5,10 @@
 ** init_proc.c
 */
 
-#include "struct.h"
-#include "macros.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "struct.h"
+#include "macros.h"
 
 void new_proc(param_ch_t *ch, process_t *node)
 {

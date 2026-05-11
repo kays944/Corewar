@@ -74,7 +74,7 @@ tests_run: 	clean
 	$(CC) -o unit_tests $(TESTS) $(SRC_TESTS) $(CFLAGS) $(CPPFLAGS)
 	-./unit_tests
 
-debug: CFLAGS += -g
+debug: CFLAGS += -g3
 debug:	$(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS)
 

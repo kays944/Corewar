@@ -5,9 +5,9 @@
 ** helper.c
 */
 
+#include <unistd.h>
 #include "utils.h"
 #include "macros.h"
-#include <unistd.h>
 
 int helper(void)
 {

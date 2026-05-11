@@ -5,10 +5,9 @@
 ** get_pos.c
 */
 
+#include <stdlib.h>
 #include "struct.h"
 #include "macros.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 static int count_champions(param_ch_t *head)
 {

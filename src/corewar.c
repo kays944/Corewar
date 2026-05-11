@@ -5,11 +5,11 @@
 ** corewar.c
 */
 
+#include <stdio.h>
 #include "corewar.h"
 #include "macros.h"
 #include "utils.h"
 #include "struct.h"
-#include <stdio.h>
 
 int corewar(int argc, char **argv)
 {
