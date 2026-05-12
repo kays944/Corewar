@@ -18,6 +18,8 @@ SRC				=	src/main.c						\
 					src/get_pos.c 					\
 					src/init_proc.c 				\
 					src/main_loop.c 				\
+					src/dump.c 						\
+					src/execution.c 				\
 					src/utils/array_count.c 		\
 					src/utils/free_array.c 			\
 					src/utils/my_itoa.c 			\
