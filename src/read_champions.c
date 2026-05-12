@@ -38,7 +38,7 @@ static int check_exec_magic(int fd, header_t *hd)
     return EXIT_SUCCESS;
 }
 
-static int get_bytecode(int fd, param_ch_t *ch)
+static int get_bytecode(int fd, champ_t *ch)
 {
     ch->bytecode = malloc(ch->header.prog_size * sizeof(char));
     if (!ch->bytecode)
@@ -48,14 +48,14 @@ static int get_bytecode(int fd, param_ch_t *ch)
     return EXIT_SUCCESS;
 }
 
-static int get_number(param_ch_t *ch, size_t nbr)
+static int get_number(champ_t *ch, size_t nbr)
 {
     if (ch->number == -1)
         ch->number = nbr;
     return EXIT_SUCCESS;
 }
 
-static int open_champions(param_ch_t *ch, size_t nbr, int nb_champions)
+static int open_champions(champ_t *ch, size_t nbr, int nb_champions)
 {
     int fd = open(ch->name, O_RDONLY);
 
@@ -70,17 +70,17 @@ static int open_champions(param_ch_t *ch, size_t nbr, int nb_champions)
     return EXIT_SUCCESS;
 }
 
-int read_champions(core_t *opt)
+int read_champions(core_t *c)
 {
-    param_ch_t *head = opt->champions;
+    champ_t *head = c->champions;
     size_t nbr = 0;
 
     while (head) {
-        if (open_champions(head, nbr, opt->nb_champions) == EXIT_FAIL)
+        if (open_champions(head, nbr, c->nb_champions) == EXIT_FAIL)
             return EXIT_FAIL;
         head = head->next;
         ++nbr;
     }
-    init_memory(opt);
+    init_memory(c);
     return EXIT_SUCCESS;
 }
