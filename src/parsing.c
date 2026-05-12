@@ -11,21 +11,21 @@
 #include "utils.h"
 #include "struct.h"
 
-int parsing_dump(core_t *opt, char *flag, char *nbr_cycles)
+int parsing_dump(core_t *c, char *flag, char *nbr_cycles)
 {
     size_t idx = 0;
 
     if (my_strcmp(flag, CHAR_FLAG_DUMP) == CMP_SUCCESS && nbr_cycles) {
-        opt->nbr_cycle = my_getnbr(nbr_cycles);
+        c->nbr_cycle = my_getnbr(nbr_cycles);
         idx = NEXT_IDX_IF_DUMP;
     } else {
-        opt->nbr_cycle = NBR_CYCLES_DEFAULT;
+        c->nbr_cycle = NBR_CYCLES_DEFAULT;
         idx = NEXT_IDX_IF_NOT_DUMP;
     }
     return idx;
 }
 
-int parsing_one(char **argv, int idx, param_ch_t *node)
+int parsing_one(char **argv, int idx, champ_t *node)
 {
     int nbr = -1;
     int pos = -1;
@@ -49,15 +49,15 @@ int parsing_one(char **argv, int idx, param_ch_t *node)
     return idx + 1;
 }
 
-int parsing(int argc, char **argv, core_t *opt)
+int parsing(int argc, char **argv, core_t *c)
 {
-    int i = parsing_dump(opt, argv[IDX_FLAG_DUMP], argv[IDX_FLAG_NBR_CYCLE]);
-    param_ch_t *head = NULL;
-    param_ch_t *node = NULL;
-    param_ch_t *current = NULL;
+    int i = parsing_dump(c, argv[IDX_FLAG_DUMP], argv[IDX_FLAG_NBR_CYCLE]);
+    champ_t *head = NULL;
+    champ_t *node = NULL;
+    champ_t *current = NULL;
 
     for (; argv[i];) {
-        node = malloc(sizeof(param_ch_t));
+        node = malloc(sizeof(champ_t));
         if (!node)
             return EXIT_FAIL;
         i = parsing_one(argv, i, node);
@@ -69,6 +69,6 @@ int parsing(int argc, char **argv, core_t *opt)
             current->next = node;
         current = node;
     }
-    opt->champions = head;
+    c->champions = head;
     return EXIT_SUCCESS;
 }
