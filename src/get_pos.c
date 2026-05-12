@@ -9,7 +9,7 @@
 #include "struct.h"
 #include "macros.h"
 
-static int count_champions(param_ch_t *head)
+static int count_champions(champ_t *head)
 {
     int count = 0;
 
@@ -40,23 +40,23 @@ static int get_best_pos(unsigned char mem[])
     return (bigger / 2) + idx_bigger;
 }
 
-static void put_in_memory(unsigned char mem[], param_ch_t *head)
+static void put_in_memory(unsigned char mem[], champ_t *head)
 {
     for (size_t i = 0; i != head->header.prog_size; ++i)
         mem[(head->position + i) % MEM_SIZE] = head->bytecode[i];
 }
 
-int init_memory(core_t *opt)
+int init_memory(core_t *c)
 {
-    param_ch_t *head = opt->champions;
+    champ_t *head = c->champions;
 
-    opt->nb_champions = count_champions(opt->champions);
+    c->nb_champions = count_champions(c->champions);
     while (head) {
         if (head->position != -1)
             head->position = head->position % MEM_SIZE;
         if (head->position == -1)
-            head->position = get_best_pos(opt->memory);
-        put_in_memory(opt->memory, head);
+            head->position = get_best_pos(c->memory);
+        put_in_memory(c->memory, head);
         head = head->next;
     }
     return EXIT_SUCCESS;
