@@ -10,7 +10,7 @@
 #include "struct.h"
 #include "macros.h"
 
-void new_proc(param_ch_t *ch, process_t *node)
+void new_proc(champ_t *ch, process_t *node)
 {
     node->number = ch->number;
     node->pc = ch->position;
@@ -19,12 +19,14 @@ void new_proc(param_ch_t *ch, process_t *node)
     for (size_t i = 0; i < REG_NUMBER; ++i)
         node->registers[i] = 0;
     node->registers[0] = ch->number;
+    node->champion = ch;
+    node->next_execution = 1;
     node->next = NULL;
 }
 
-int init_proc(core_t *opt)
+int init_proc(core_t *c)
 {
-    param_ch_t *ch = opt->champions;
+    champ_t *ch = c->champions;
     process_t *head = NULL;
     process_t *node = NULL;
     process_t *current = NULL;
@@ -41,6 +43,6 @@ int init_proc(core_t *opt)
         current = node;
         ch = ch->next;
     }
-    opt->proc = head;
+    c->proc = head;
     return EXIT_SUCCESS;
 }
