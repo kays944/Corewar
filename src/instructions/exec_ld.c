@@ -5,7 +5,9 @@
 ** sti_exec.c
 */
 
-int exec_ld(void)
+#include "instr.h"
+
+void exec_ld(core_t *c, process_t *proc)
 {
-    return 0;
+    return;
 }

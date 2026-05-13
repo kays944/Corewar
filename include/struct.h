@@ -37,5 +37,4 @@ typedef struct core_s {
     process_t *proc;
 } core_t;
 
-
 #endif

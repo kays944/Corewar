@@ -29,7 +29,8 @@ int main_loop(core_t *c)
 {
     size_t cycle = 0;
 
-    while (check_live(c->proc, cycle) > 0) {
+    // while (check_live(c->proc, cycle) > 0) {
+    while (cycle != 1) {
         if (c->nbr_cycle > 0 && cycle % c->nbr_cycle == 0)
             dump(c, cycle);
         execution_cycle(c);

@@ -29,4 +29,7 @@
     #define OPEN_ERROR -1
     #define READ_ERROR -1
 
+    #define OFFSET 2
+    #define REGISTER_SIZE 1
+
 #endif

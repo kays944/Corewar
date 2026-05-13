@@ -5,7 +5,11 @@
 ** sti_exec.c
 */
 
-int exec_sti(void)
+#include <stdio.h>
+#include "instr.h"
+
+void exec_sti(core_t *c, process_t *proc)
 {
-    return 0;
+    printf("sti hello world\n");
+    return;
 }

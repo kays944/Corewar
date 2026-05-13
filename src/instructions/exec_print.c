@@ -5,7 +5,9 @@
 ** sti_exec.c
 */
 
-int exec_print(void)
+#include "instr.h"
+
+void exec_print(core_t *c, process_t *proc)
 {
-    return 0;
+    return;
 }

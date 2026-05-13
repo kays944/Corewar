@@ -20,6 +20,22 @@ SRC				=	src/main.c						\
 					src/main_loop.c 				\
 					src/dump.c 						\
 					src/execution.c 				\
+					src/instructions/exec_add.c 	\
+					src/instructions/exec_and.c 	\
+					src/instructions/exec_fork.c 	\
+					src/instructions/exec_ld.c 		\
+					src/instructions/exec_ldi.c 	\
+					src/instructions/exec_lfork.c 	\
+					src/instructions/exec_live.c 	\
+					src/instructions/exec_lld.c 	\
+					src/instructions/exec_lldi.c 	\
+					src/instructions/exec_or.c 		\
+					src/instructions/exec_print.c 	\
+					src/instructions/exec_st.c 		\
+					src/instructions/exec_sti.c 	\
+					src/instructions/exec_sub.c 	\
+					src/instructions/exec_xor.c 	\
+					src/instructions/exec_zjmp.c 	\
 					src/utils/array_count.c 		\
 					src/utils/free_array.c 			\
 					src/utils/my_itoa.c 			\
@@ -55,6 +71,7 @@ all: $(NAME)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 	mkdir -p $(OBJ_DIR)/utils
+	mkdir -p $(OBJ_DIR)/instructions
 
 $(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
 	$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
