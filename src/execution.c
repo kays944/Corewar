@@ -14,6 +14,7 @@
 #include "macros.h"
 #include "op.h"
 #include "instr.h"
+#include "corewar.h"
 
 const exec_func_t exec_tab[17] = {
     NULL,
@@ -63,22 +64,29 @@ int get_size_param(int type, int opcode)
     return EXIT_FAIL;
 }
 
-static void execution_proc(core_t *c, process_t *proc)
+static int execution_proc(core_t *c, process_t *proc)
 {
-    char opcode = c->memory[proc->pc];
+    unsigned char opcode = c->memory[proc->pc];
 
-    if (opcode < 1 || opcode > 16)
-        my_putstr("invalid opcode\n", STDERR_FILENO);
+    if (opcode < 1 || opcode > 16) {
+        proc->pc = (proc->pc + 1) % MEM_SIZE;
+        proc->next_execution = 2;
+        return EXIT_SUCCESS;
+    }
     exec_tab[opcode](c, proc);
+    return EXIT_SUCCESS;
 }
 
 int execution_cycle(core_t *c)
 {
     process_t *head = c->proc;
+    int exit_code = 0;
 
     while (head) {
         if (head->next_execution == 1)
-            execution_proc(c, head);
+            exit_code = execution_proc(c, head);
+        if (exit_code == EXIT_FAIL)
+            return EXIT_FAIL;
         else
             --head->next_execution;
         head = head->next;

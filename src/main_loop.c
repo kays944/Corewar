@@ -13,12 +13,12 @@
 #include "macros.h"
 #include "corewar.h"
 
-static int check_live(process_t *proc, size_t cycle)
+static int check_live(process_t *proc, core_t *c)
 {
     int count_proc_live = 0;
 
     while (proc) {
-        if (cycle - proc->last_live <= CYCLE_TO_DIE)
+        if (c->cycle - proc->last_live <= c->cycle_to_die)
             ++count_proc_live;
         proc = proc->next;
     }
@@ -44,34 +44,18 @@ static int who_last_live(process_t *proc, size_t cycle)
     return EXIT_SUCCESS;
 }
 
-static int end_equality(core_t *c)
-{
-    process_t *head = c->proc;
-
-    my_putstr("\n\nCes champions : \n", STDOUT_FILENO);
-    while (head) {
-        if (c->cycle - head->last_live <= CYCLE_TO_DIE) {
-            my_putstr("    - ", STDOUT_FILENO);
-            my_putstr(head->champion->header.prog_name, STDOUT_FILENO);
-            my_putstr(" (", STDOUT_FILENO);
-            my_putstr(my_itoa(head->number), STDOUT_FILENO);
-            my_putstr(")\n", STDOUT_FILENO);
-        }
-        head = head->next;
-    }
-    my_putstr("sont encore en vie au bout de 10 000 tours\n", STDOUT_FILENO);
-    return EXIT_SUCCESS;
-}
-
 int main_loop(core_t *c)
 {
     c->cycle = 0;
-    while (check_live(c->proc, c->cycle) > 1) {
-        if (c->cycle == 10001)
-            return end_equality(c);
+    c->live_count = 0;
+    c->cycle_to_die = CYCLE_TO_DIE;
+    while (check_live(c->proc, c) > 1) {
+        if (c->cycle == 1000001)
+            return EXIT_FAIL;
         if (c->nbr_cycle > 0 && c->cycle % c->nbr_cycle == 0)
             dump(c);
-        execution_cycle(c);
+        if (execution_cycle(c) == EXIT_FAIL)
+            return EXIT_FAIL;
         ++c->cycle;
     }
     who_last_live(c->proc, c->cycle);

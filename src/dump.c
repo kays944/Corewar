@@ -10,7 +10,7 @@
 #include "struct.h"
 #include "utils.h"
 
-static void write_hex(unsigned long value, int width, int canal)
+void write_hex(unsigned long value, int width, int canal)
 {
     char hex[] = "0123456789ABCDEF";
     char buf[16];

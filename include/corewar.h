@@ -19,5 +19,6 @@ int init_memory(core_t *c);
 int main_loop(core_t *c);
 void dump(core_t *c);
 int execution_cycle(core_t *c);
+void write_hex(unsigned long value, int width, int canal);
 
 #endif

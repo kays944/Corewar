@@ -26,4 +26,9 @@ void exec_live(core_t *c, process_t *proc)
     (void)c;
     proc->next_execution = 10;
     proc->last_live = c->cycle;
+    ++c->live_count;
+    if (c->live_count == NBR_LIVE) {
+        my_putstr("ABAISSEMENT DU CYCLE TO DIE\n", STDOUT_FILENO);
+        c->cycle_to_die -= CYCLE_DELTA;
+    }
 }

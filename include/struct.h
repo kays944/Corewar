@@ -36,6 +36,8 @@ typedef struct core_s {
     unsigned char memory[MEM_SIZE];
     process_t *proc;
     size_t cycle;
+    int live_count;
+    int cycle_to_die;
 } core_t;
 
 #endif
