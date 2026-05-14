@@ -20,4 +20,5 @@ void exec_xor(core_t *c, process_t *proc)
     proc->registers[reg - 1] = xored;
     proc->carry = (xored == 0);
     proc->pc = (p + 1) % MEM_SIZE;
+    proc->next_execution = 6;
 }

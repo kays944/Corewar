@@ -25,4 +25,5 @@ void exec_lldi(core_t *c, process_t *proc)
     proc->registers[reg - 1] = val;
     proc->carry = (val == 0);
     proc->pc = (p + 1) % MEM_SIZE;
+    proc->next_execution = 50;
 }

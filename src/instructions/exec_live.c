@@ -14,12 +14,16 @@ void exec_live(core_t *c, process_t *proc)
 {
     char *nb = my_itoa(proc->champion->number);
 
-    my_putstr("The player ", STDOUT_FILENO);
-    my_putstr(nb, STDOUT_FILENO);
-    my_putstr("(", STDOUT_FILENO);
+    my_putstr("live: cycle: ", STDOUT_FILENO);
+    my_putstr(my_itoa(c->cycle), STDOUT_FILENO);
+    my_putstr(" The player ", STDOUT_FILENO);
     my_putstr(proc->champion->header.prog_name, STDOUT_FILENO);
-    my_putstr(" )is alive.\n", STDOUT_FILENO);
+    my_putstr(" (", STDOUT_FILENO);
+    my_putstr(nb, STDOUT_FILENO);
+    my_putstr(") is alive.\n", STDOUT_FILENO);
     free(nb);
     proc->pc = (proc->pc + 5) % MEM_SIZE;
     (void)c;
+    proc->next_execution = 10;
+    proc->last_live = c->cycle;
 }

@@ -18,4 +18,5 @@ void exec_sub(core_t *c, process_t *proc)
     proc->registers[r3 - 1] = val;
     proc->carry = (val == 0);
     proc->pc = (pc + 5) % MEM_SIZE;
+    proc->next_execution = 10;
 }

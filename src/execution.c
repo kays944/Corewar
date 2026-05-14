@@ -15,7 +15,7 @@
 #include "op.h"
 #include "instr.h"
 
-exec_func_t exec_tab[17] = {
+const exec_func_t exec_tab[17] = {
     NULL,
     exec_live,
     exec_ld,
@@ -50,7 +50,7 @@ static int is_index(int opcode)
     return EXIT_SUCCESS;
 }
 
-static int get_size_param(int type, int opcode)
+int get_size_param(int type, int opcode)
 {
     if (type == T_REG)
         return REGISTER_SIZE;
@@ -66,25 +66,10 @@ static int get_size_param(int type, int opcode)
 static void execution_proc(core_t *c, process_t *proc)
 {
     char opcode = c->memory[proc->pc];
-    char coding_byte = 0;
-    int type = 0;
-    int size = 0;
 
     if (opcode < 1 || opcode > 16)
         my_putstr("invalid opcode\n", STDERR_FILENO);
-    if (is_coding_byte(opcode) == EXIT_SUCCESS) {
-        proc->pc += 1;
-        coding_byte = c->memory[proc->pc];
-    }
-    proc->pc += 1;
-    for (size_t i = 0; i != op_tab[opcode].nbr_args; ++i) {
-        type = (coding_byte >> (6 - i * 2)) & 0x03;
-        size = get_size_param(type, opcode);
-        // for (size_t j = 0; j != size; ++j) {
-        //     printf("param %zu : %02x\n", i, c->memory[proc->pc]);
-        //     ++proc->pc;
-        // }
-    }
+    exec_tab[opcode](c, proc);
 }
 
 int execution_cycle(core_t *c)
@@ -92,9 +77,10 @@ int execution_cycle(core_t *c)
     process_t *head = c->proc;
 
     while (head) {
-        if (head->next_execution == 1) {
+        if (head->next_execution == 1)
             execution_proc(c, head);
-        }
+        else
+            --head->next_execution;
         head = head->next;
     }
     return EXIT_SUCCESS;

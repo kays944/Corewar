@@ -18,4 +18,5 @@ void exec_ld(core_t *c, process_t *proc)
     proc->registers[r - 1] = val;
     proc->carry = (val == 0);
     proc->pc = (p + 1) % MEM_SIZE;
+    proc->next_execution = 5;
 }

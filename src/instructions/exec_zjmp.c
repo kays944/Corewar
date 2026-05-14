@@ -17,4 +17,5 @@ void exec_zjmp(core_t *c, process_t *proc)
         proc->pc = pos_mod(pc + off, MEM_SIZE);
     else
         proc->pc = (pc + 3) % MEM_SIZE;
+    proc->next_execution = 20;
 }

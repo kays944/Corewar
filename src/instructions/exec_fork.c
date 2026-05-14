@@ -15,11 +15,10 @@ void exec_fork(core_t *c, process_t *proc)
         | c->memory[(pc + 2) % MEM_SIZE];
     int idx = pos_mod(off, IDX_MOD);
     process_t *np = malloc(sizeof(process_t));
-    int i = 0;
 
     if (!np)
         return;
-    for (i = 0; i < REG_NUMBER; i++)
+    for (int i = 0; i < REG_NUMBER; i++)
         np->registers[i] = proc->registers[i];
     np->pc = (pc + idx) % MEM_SIZE;
     np->carry = proc->carry;
@@ -30,4 +29,5 @@ void exec_fork(core_t *c, process_t *proc)
     np->next = c->proc;
     c->proc = np;
     proc->pc = (pc + 3) % MEM_SIZE;
+    proc->next_execution = 800;
 }

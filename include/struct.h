@@ -35,6 +35,7 @@ typedef struct core_s {
     champ_t *champions;
     unsigned char memory[MEM_SIZE];
     process_t *proc;
+    size_t cycle;
 } core_t;
 
 #endif

@@ -20,4 +20,5 @@ void exec_and(core_t *c, process_t *proc)
     proc->registers[r - 1] = res;
     proc->carry = (res == 0);
     proc->pc = (p + 1) % MEM_SIZE;
+    proc->next_execution = 6;
 }

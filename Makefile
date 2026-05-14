@@ -9,48 +9,48 @@ TESTS 			=
 
 SRC_MAIN 		= 		src/main.c
 
-SRC			=		src/main.c					\
-					src/corewar.c 					\
-					src/helper.c 					\
-					src/op.c 					\
-					src/parsing.c 					\
-					src/read_champions.c 				\
-					src/get_pos.c 					\
-					src/init_proc.c 				\
-					src/main_loop.c 				\
-					src/dump.c 					\
-					src/execution.c 				\
+SRC			=		src/main.c								\
+					src/corewar.c 							\
+					src/helper.c 							\
+					src/op.c 								\
+					src/parsing.c 							\
+					src/read_champions.c 					\
+					src/get_pos.c 							\
+					src/init_proc.c 						\
+					src/main_loop.c 						\
+					src/dump.c 								\
+					src/execution.c 						\
 					src/instructions/exec_add.c 			\
 					src/instructions/exec_and.c 			\
 					src/instructions/exec_fork.c 			\
-					src/instructions/exec_ld.c 			\
+					src/instructions/exec_ld.c 				\
 					src/instructions/exec_ldi.c 			\
 					src/instructions/exec_lfork.c 			\
 					src/instructions/exec_live.c 			\
 					src/instructions/exec_lld.c 			\
 					src/instructions/exec_lldi.c 			\
-					src/instructions/exec_or.c 			\
+					src/instructions/exec_or.c 				\
 					src/instructions/exec_print.c 			\
-					src/instructions/exec_st.c 			\
+					src/instructions/exec_st.c 				\
 					src/instructions/exec_sti.c 			\
 					src/instructions/exec_sub.c 			\
 					src/instructions/exec_xor.c 			\
 					src/instructions/exec_zjmp.c 			\
 					src/instructions/read_arg.c 			\
-					src/utils/array_count.c 			\
-					src/utils/free_array.c 				\
-					src/utils/my_itoa.c 				\
-					src/utils/my_putstr.c 				\
-					src/utils/my_strcat.c 				\
-					src/utils/my_strcmp.c 				\
-					src/utils/my_strcpy.c 				\
-					src/utils/my_strdup.c 				\
-					src/utils/my_strlen.c				\
-					src/utils/my_strncmp.c 				\
-					src/utils/my_strndup.c				\
-					src/utils/str_split.c				\
-					src/utils/read_file.c				\
-					src/utils/my_getnbr.c				\
+					src/utils/array_count.c 				\
+					src/utils/free_array.c 					\
+					src/utils/my_itoa.c 					\
+					src/utils/my_putstr.c 					\
+					src/utils/my_strcat.c 					\
+					src/utils/my_strcmp.c 					\
+					src/utils/my_strcpy.c 					\
+					src/utils/my_strdup.c 					\
+					src/utils/my_strlen.c					\
+					src/utils/my_strncmp.c 					\
+					src/utils/my_strndup.c					\
+					src/utils/str_split.c					\
+					src/utils/read_file.c					\
+					src/utils/my_getnbr.c					\
 					src/utils/my_strncpy.c
 
 SRC_TESTS 		= 	$(filter-out $(SRC_MAIN), $(SRC))

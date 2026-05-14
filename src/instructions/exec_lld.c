@@ -28,4 +28,5 @@ void exec_lld(core_t *c, process_t *proc)
     proc->registers[c->memory[(pc + 2 + sz) % MEM_SIZE] - 1] = val;
     proc->carry = (val == 0);
     proc->pc = (pc + 3 + sz) % MEM_SIZE;
+    proc->next_execution = 10;
 }

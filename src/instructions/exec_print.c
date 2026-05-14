@@ -16,4 +16,5 @@ void exec_print(core_t *c, process_t *proc)
 
     write(STDOUT_FILENO, &ch, 1);
     proc->pc = (pc + 3) % MEM_SIZE;
+    proc->next_execution = 2;
 }

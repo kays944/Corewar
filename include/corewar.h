@@ -17,7 +17,7 @@ int read_champions(core_t *c);
 int init_proc(core_t *c);
 int init_memory(core_t *c);
 int main_loop(core_t *c);
-void dump(core_t *c, size_t cycle);
+void dump(core_t *c);
 int execution_cycle(core_t *c);
 
 #endif

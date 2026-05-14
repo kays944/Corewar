@@ -23,4 +23,5 @@ void exec_lfork(core_t *c, process_t *proc)
     np->next = c->proc;
     c->proc = np;
     proc->pc = (pc + 3) % MEM_SIZE;
+    proc->next_execution = 1000;
 }

@@ -28,4 +28,5 @@ void exec_st(core_t *c, process_t *proc)
     c->memory[(dst + 2) % MEM_SIZE] = (val >> 8) & 0xFF;
     c->memory[(dst + 3) % MEM_SIZE] = val & 0xFF;
     proc->pc = (pc + 5) % MEM_SIZE;
+    proc->next_execution = 5;
 }
