@@ -27,6 +27,10 @@ void exec_sub(core_t *c, process_t *proc);
 void exec_xor(core_t *c, process_t *proc);
 void exec_zjmp(core_t *c, process_t *proc);
 
+int pos_mod(int x, int n);
+int read_arg(core_t *c, process_t *p, int t, int *pos);
+int read_idx(core_t *c, process_t *p, int t, int *pos);
+int read_lidx(core_t *c, process_t *p, int t, int *pos);
 
 typedef void (*exec_func_t)(core_t *, process_t *);
 
