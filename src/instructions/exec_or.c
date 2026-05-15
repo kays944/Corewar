@@ -17,7 +17,8 @@ void exec_or(core_t *c, process_t *proc)
     int dest = c->memory[p % MEM_SIZE];
     int result = val1 | val2;
 
-    proc->registers[dest - 1] = result;
+    if (valid_reg(dest))
+        proc->registers[dest - 1] = result;
     proc->carry = (result == 0);
     proc->pc = (p + 1) % MEM_SIZE;
     proc->next_execution = 6;

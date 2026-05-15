@@ -15,7 +15,8 @@ void exec_ld(core_t *c, process_t *proc)
     int val = read_arg(c, proc, t, &p);
     int r = c->memory[p % MEM_SIZE];
 
-    proc->registers[r - 1] = val;
+    if (valid_reg(r))
+        proc->registers[r - 1] = val;
     proc->carry = (val == 0);
     proc->pc = (p + 1) % MEM_SIZE;
     proc->next_execution = 5;

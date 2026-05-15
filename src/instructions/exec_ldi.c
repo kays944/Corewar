@@ -22,7 +22,8 @@ void exec_ldi(core_t *c, process_t *proc)
         + (c->memory[(pc + off + 1) % MEM_SIZE] << 16)
         + (c->memory[(pc + off + 2) % MEM_SIZE] << 8)
         + c->memory[(pc + off + 3) % MEM_SIZE];
-    proc->registers[r - 1] = val;
+    if (valid_reg(r))
+        proc->registers[r - 1] = val;
     proc->carry = (val == 0);
     proc->pc = (p + 1) % MEM_SIZE;
     proc->next_execution = 25;

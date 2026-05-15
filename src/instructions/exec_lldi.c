@@ -22,7 +22,8 @@ void exec_lldi(core_t *c, process_t *proc)
         + (c->memory[(addr + 1) % MEM_SIZE] << 16)
         + (c->memory[(addr + 2) % MEM_SIZE] << 8)
         + c->memory[(addr + 3) % MEM_SIZE];
-    proc->registers[reg - 1] = val;
+    if (valid_reg(reg))
+        proc->registers[reg - 1] = val;
     proc->carry = (val == 0);
     proc->pc = (p + 1) % MEM_SIZE;
     proc->next_execution = 50;

@@ -13,7 +13,7 @@ void exec_sti(core_t *c, process_t *proc)
     int cb = c->memory[(pc + 1) % MEM_SIZE];
     int p = pc + 2;
     int src = c->memory[p % MEM_SIZE];
-    int val = proc->registers[src - 1];
+    int val = valid_reg(src) ? proc->registers[src - 1] : 0;
     int a = 0;
     int b = 0;
     int dst = 0;

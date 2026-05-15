@@ -17,7 +17,8 @@ void exec_and(core_t *c, process_t *proc)
     int r = c->memory[p % MEM_SIZE];
     int res = a & b;
 
-    proc->registers[r - 1] = res;
+    if (valid_reg(r))
+        proc->registers[r - 1] = res;
     proc->carry = (res == 0);
     proc->pc = (p + 1) % MEM_SIZE;
     proc->next_execution = 6;

@@ -21,10 +21,12 @@ int read_arg(core_t *c, process_t *p, int t, int *pos)
     int b = *pos;
     short off = 0;
     int addr = b;
+    int idx = 0;
 
     if (t == 1) {
+        idx = c->memory[b % MEM_SIZE];
         *pos += 1;
-        return p->registers[c->memory[b % MEM_SIZE] - 1];
+        return valid_reg(idx) ? p->registers[idx - 1] : 0;
     }
     if (t == 3) {
         off = (c->memory[b % MEM_SIZE] << 8) | c->memory[(b + 1) % MEM_SIZE];
@@ -43,10 +45,12 @@ int read_idx(core_t *c, process_t *p, int t, int *pos)
     int b = *pos;
     short s = 0;
     int addr = 0;
+    int idx = 0;
 
     if (t == 1) {
+        idx = c->memory[b % MEM_SIZE];
         *pos += 1;
-        return p->registers[c->memory[b % MEM_SIZE] - 1];
+        return valid_reg(idx) ? p->registers[idx - 1] : 0;
     }
     s = (c->memory[b % MEM_SIZE] << 8) | c->memory[(b + 1) % MEM_SIZE];
     *pos += 2;
@@ -61,10 +65,12 @@ int read_lidx(core_t *c, process_t *p, int t, int *pos)
     int start = *pos;
     short val = 0;
     int mem_addr = 0;
+    int idx = 0;
 
     if (t == 1) {
+        idx = c->memory[start % MEM_SIZE];
         *pos += 1;
-        return p->registers[c->memory[start % MEM_SIZE] - 1];
+        return valid_reg(idx) ? p->registers[idx - 1] : 0;
     }
     val = (c->memory[start % MEM_SIZE] << 8)
         | c->memory[(start + 1) % MEM_SIZE];

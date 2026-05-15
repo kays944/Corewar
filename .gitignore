@@ -1,7 +1,8 @@
 obj
 corewar
-*.s
 *.cor
 *.gc*
 unit_tests
-debug.c
+tests/examples/robot
+out
+sujet.pdf
