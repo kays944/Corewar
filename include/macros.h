@@ -29,7 +29,14 @@
     #define OPEN_ERROR -1
     #define READ_ERROR -1
 
-    #define OFFSET 2
     #define REGISTER_SIZE 1
+
+    #define FIRST_OPCODE 1
+    #define LAST_OPCODE 16
+
+    #define NEXT_EXECUTION 1
+
+    #define BYTE_PER_LINE 32
+    #define SIZE_BYTE 8
 
 #endif

@@ -20,6 +20,7 @@ SRC			=		src/main.c								\
 					src/main_loop.c 						\
 					src/dump.c 								\
 					src/execution.c 						\
+					src/free_all.c 							\
 					src/instructions/exec_add.c 			\
 					src/instructions/exec_and.c 			\
 					src/instructions/exec_fork.c 			\
@@ -41,6 +42,8 @@ SRC			=		src/main.c								\
 					src/utils/free_array.c 					\
 					src/utils/my_itoa.c 					\
 					src/utils/my_putstr.c 					\
+					src/utils/my_put_hex.c 					\
+					src/utils/my_putnbr.c 					\
 					src/utils/my_strcat.c 					\
 					src/utils/my_strcmp.c 					\
 					src/utils/my_strcpy.c 					\

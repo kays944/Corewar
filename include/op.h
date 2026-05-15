@@ -65,6 +65,10 @@ typedef struct op_s {
 */
 extern const op_t op_tab[];
 
+extern const int opcode_index[];
+
+extern const int opcode_no_coding_byte[];
+
 /*
 ** header
 */

@@ -33,3 +33,7 @@ const op_t op_tab[] = {
     {"print", 1, {T_REG}, 16, 2, "print character"},
     {0, 0, {0}, 0, 0, 0}
 };
+
+const int opcode_index[] = {9, 10, 11, 12, 14, 15};
+
+const int opcode_no_coding_byte[] = {1, 9, 12, 15};

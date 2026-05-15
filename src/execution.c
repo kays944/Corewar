@@ -5,8 +5,6 @@
 ** execution
 */
 
-#include <stdio.h>
-
 #include <unistd.h>
 #include <stdlib.h>
 #include "struct.h"
@@ -38,16 +36,17 @@ const exec_func_t exec_tab[17] = {
 
 static int is_coding_byte(int opcode)
 {
-    if (opcode == 1 || opcode == 9 || opcode == 12 || opcode == 15)
-        return EXIT_FAIL;
+    for (size_t i = 0; opcode_no_coding_byte[i]; ++i)
+        if (opcode == opcode_no_coding_byte[i])
+            return EXIT_FAIL;
     return EXIT_SUCCESS;
 }
 
 static int is_index(int opcode)
 {
-    if (opcode == 9 || opcode == 10 || opcode == 11 || opcode == 12
-        || opcode == 14 || opcode == 15)
-        return EXIT_FAIL;
+    for (size_t i = 0; opcode_index[i]; ++i)
+        if (opcode == opcode_index[i])
+            return EXIT_FAIL;
     return EXIT_SUCCESS;
 }
 
@@ -68,9 +67,9 @@ static int execution_proc(core_t *c, process_t *proc)
 {
     unsigned char opcode = c->memory[proc->pc];
 
-    if (opcode < 1 || opcode > 16) {
+    if (opcode < FIRST_OPCODE || opcode > LAST_OPCODE) {
         proc->pc = (proc->pc + 1) % MEM_SIZE;
-        proc->next_execution = 2;
+        proc->next_execution = NEXT_EXECUTION + 1;
         return EXIT_SUCCESS;
     }
     exec_tab[opcode](c, proc);
@@ -83,7 +82,7 @@ int execution_cycle(core_t *c)
     int exit_code = 0;
 
     while (head) {
-        if (head->next_execution == 1)
+        if (head->next_execution == NEXT_EXECUTION)
             exit_code = execution_proc(c, head);
         if (exit_code == EXIT_FAIL)
             return EXIT_FAIL;

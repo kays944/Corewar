@@ -24,5 +24,7 @@ char *read_file(char *file);
 int array_count(char **arr);
 int my_getnbr(char const *str);
 char *my_strncpy(char *dest, char const *src, int n);
+void my_put_hex(unsigned long value, int width, int canal);
+void my_putnbr(int nb, int canal);
 
 #endif

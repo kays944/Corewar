@@ -34,4 +34,9 @@ int read_lidx(core_t *c, process_t *p, int t, int *pos);
 
 typedef void (*exec_func_t)(core_t *, process_t *);
 
+static inline int valid_reg(int idx)
+{
+    return idx >= 1 && idx <= REG_NUMBER;
+}
+
 #endif
